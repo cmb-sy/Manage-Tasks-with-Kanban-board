@@ -34,21 +34,27 @@ const addTodo = () => {
 };
 
 const newTodo = ref("");
+
+// タスクを削するメソッド
+const removeTodo = (index) => {
+  todos.value.splice(index, 1);
+};
 </script>
 
 <!-- :key:idで空でも入れられるようになっている -->
 <template>
+  <input type="text" size="30" v-model="newTodo" />
+  <button v-on:click="addTodo()">タスク追加</button><br /><br />
   <div class="flex">
     <div class="col3">
       <span class="tag">候補</span><br />
-
-      <input type="text" size="30" v-model="newTodo" />
-      <button v-on:click="addTodo()">タスク追加</button>
-
       <draggable v-model="todos" group="people" :key="id" tag="ul">
         <template #item="{ element, index }">
           <div class="drag-item" @dragstart="saveIndex(index)">
-            <li class="handle">{{ element.name }}</li>
+            <li class="handle">
+              {{ element.name }}
+              <button @click="removeTodo(index)">削除</button>
+            </li>
           </div>
         </template>
       </draggable>
@@ -59,7 +65,7 @@ const newTodo = ref("");
       <draggable v-model="todos2" group="people" :key="id" tag="ul">
         <template #item="{ element, index }">
           <div class="drag-item" @dragstart="saveIndex(index)">
-            <li class="handle">{{ element.name }}</li>
+            <li class="handle">{{ element.name }} <button>削除</button></li>
           </div>
         </template>
       </draggable>
