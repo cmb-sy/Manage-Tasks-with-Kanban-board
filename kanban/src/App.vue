@@ -9,20 +9,42 @@ const todos = ref([
   { id: 3, name: "wswsw", content: "テスト3", categoryNo: "1" },
 ]);
 
-const todos2 = ref([""]);
+const todos2 = ref([
+  { id: 1, name: "おかし", content: "おかき", categoryNo: "2" },
+  { id: 2, name: "青", content: "おかし", categoryNo: "2" },
+  { id: 3, name: "黄色", content: "いし", categoryNo: "2" },
+]);
 
 const dragIndex = ref("");
 const saveIndex = (index) => {
   console.log("dragStart", index);
   dragIndex.value = index;
 };
+
+const addTodo = () => {
+  // 追加タスクに一番大きいインデックス番号を振る
+  let newIndex = todos.value.length;
+  todos.value.push({
+    no: newIndex + 1,
+    name: newTodo.value,
+    categoryNo: "1",
+  });
+  // 値をいれた後空欄にする。
+  newTodo.value = "";
+};
+
+const newTodo = ref("");
 </script>
 
 <!-- :key:idで空でも入れられるようになっている -->
 <template>
   <div class="flex">
     <div class="col3">
-      <span class="tag">候補</span>
+      <span class="tag">候補</span><br />
+
+      <input type="text" size="30" v-model="newTodo" />
+      <button v-on:click="addTodo()">タスク追加</button>
+
       <draggable v-model="todos" group="people" :key="id" tag="ul">
         <template #item="{ element, index }">
           <div class="drag-item" @dragstart="saveIndex(index)">
