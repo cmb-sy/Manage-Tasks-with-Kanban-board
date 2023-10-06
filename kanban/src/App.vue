@@ -3,6 +3,7 @@ import draggable from "vuedraggable";
 import { ref } from "vue";
 
 // refがないとドロップ後に元の場所へ戻る。
+// タスク
 const todos = ref([
   { id: 1, name: "キャベツ", content: "テスト1", categoryNo: "1" },
   { id: 2, name: "赤い", content: "テスト2", categoryNo: "1" },
@@ -15,11 +16,12 @@ const todos2 = ref([
   { id: 3, name: "黄色", content: "いし", categoryNo: "2" },
 ]);
 
-const dragIndex = ref("");
-const saveIndex = (index) => {
-  console.log("dragStart", index);
-  dragIndex.value = index;
-};
+// // カラム
+// const categories = ref([
+//   { categoryNo: 1, categoryName: "候補"  Categchecker},
+//   { categoryNo: 2, categoryName: "処理中" },
+//   { categoryNo: 3, categoryName: "完了" },
+// ]);
 
 const addTodo = () => {
   // 追加タスクに一番大きいインデックス番号を振る
@@ -32,7 +34,6 @@ const addTodo = () => {
   // 値をいれた後空欄にする。
   newTodo.value = "";
 };
-
 const newTodo = ref("");
 
 // タスクを削するメソッド
@@ -47,10 +48,17 @@ const removeTodo = (index) => {
   <button v-on:click="addTodo()">タスク追加</button><br /><br />
   <div class="flex">
     <div class="col3">
-      <span class="tag">候補</span><br />
-      <draggable v-model="todos" group="people" :key="id" tag="ul">
+      <span class="tag">候補</span>
+      <draggable
+        v-model="todos"
+        group="people"
+        :key="id"
+        tag="ul"
+        handle=".handle"
+        :animation="300"
+      >
         <template #item="{ element, index }">
-          <div class="drag-item" @dragstart="saveIndex(index)">
+          <div class="drag-item">
             <li class="handle">
               {{ element.name }}
               <button @click="removeTodo(index)">削除</button>
@@ -62,9 +70,16 @@ const removeTodo = (index) => {
 
     <div class="col2">
       <span class="tag">処理中</span>
-      <draggable v-model="todos2" group="people" :key="id" tag="ul">
-        <template #item="{ element, index }">
-          <div class="drag-item" @dragstart="saveIndex(index)">
+      <draggable
+        v-model="todos2"
+        group="people"
+        :key="id"
+        tag="ul"
+        handle=".handle"
+        :animation="300"
+      >
+        <template #item="{ element }">
+          <div class="drag-item">
             <li class="handle">{{ element.name }} <button>削除</button></li>
           </div>
         </template>
