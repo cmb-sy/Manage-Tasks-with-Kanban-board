@@ -1,8 +1,10 @@
 <script setup>
 import ListAdd from "./ListAdd.vue";
 import ListList from "./ListList.vue";
-// import { mapState } from "vuex";
+import { useStore } from "vuex";
 
+const store = useStore(); // ストアを取得
+const lists = store.state.lists;
 // const { lists } = mapState("", ["lists"]);
 </script>
 
@@ -12,13 +14,12 @@ import ListList from "./ListList.vue";
     <main>
       <p class="info-line">All: 0 tasks</p>
       <div class="list-index">
-        <ListList />
-        <!-- <ListList
+        <ListList
           v-for="(item, index) in lists"
           :key="item.id"
           :title="item.title"
           :listIndex="index"
-        /> -->
+        />
       </div>
       <ListAdd />
     </main>

@@ -1,9 +1,9 @@
 <script setup>
-import backBoard from "./components/BackBoard.vue";
+import BackBoard from "./components/BackBoard.vue";
 </script>
 
 <template>
   <div id="app">
-    <backBoard />
+    <BackBoard />
   </div>
 </template>
