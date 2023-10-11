@@ -1,29 +1,30 @@
 import { createApp } from "vue";
 import { createStore } from "vuex";
 
+// ローカルストレージに保存されたものを取得。trello-listsは設定したキー
 const savedLists = localStorage.getItem("trello-lists");
 
 const store = createStore({
-  state() {
-    return {
-      lists: savedLists
-        ? JSON.parse(savedLists)
-        : [
-            {
-              title: "Backlog",
-              cards: [{ body: "English" }, { body: "Mathematics" }],
-            },
-            {
-              title: "Todo",
-              cards: [{ body: "Science" }],
-            },
-            {
-              title: "Doing",
-              cards: [],
-            },
-          ],
-    };
+  state: {
+    // 条件 ? trueなら実行 : falseなら実行
+    lists: savedLists
+      ? JSON.parse(savedLists)
+      : [
+          {
+            title: "Backlog",
+            cards: [{ body: "English" }, { body: "Mathematics" }],
+          },
+          {
+            title: "Todo",
+            cards: [{ body: "Science" }],
+          },
+          {
+            title: "Doing",
+            cards: [],
+          },
+        ],
   },
+
   mutations: {
     addlist(state, payload) {
       state.lists.push({ title: payload.title, cards: [] });

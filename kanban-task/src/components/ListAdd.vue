@@ -3,12 +3,12 @@ import { ref, computed } from "vue";
 import { useStore } from "vuex"; // useStore フックを追加
 
 let title = ref("");
-let isEditing = ref(false);
+let isEditing = ref("");
 const store = useStore(); // ストアを取得
 
 const addList = () => {
-  store.dispatch("addlist", { title: title }); // title.value として参照
-  title = ""; // title.value として更新
+  store.dispatch("addlist", { title: title.value }); // title.value として参照
+  title.value = ""; // title.value として更新
 };
 
 // フォーカスされる：ユーザビリティなクリックの実現

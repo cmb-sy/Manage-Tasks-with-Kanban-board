@@ -26,7 +26,7 @@ const removeList = () => {
 <template>
   <div class="list">
     <div class="listheader">
-      <p class="list-title">{{ props.title }}</p>
+      <p class="list-title">{{ title }}</p>
       <div class="deletelist" @click="removeList">×</div>
     </div>
   </div>
