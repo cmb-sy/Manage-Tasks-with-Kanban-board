@@ -1,5 +1,5 @@
 <script setup>
-import backBoard from "./components/backBoard.vue";
+import backBoard from "./components/BackBoard.vue";
 </script>
 
 <template>

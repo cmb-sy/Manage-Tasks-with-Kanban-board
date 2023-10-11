@@ -7,8 +7,8 @@ let isEditing = ref(false);
 const store = useStore(); // ストアを取得
 
 const addList = () => {
-  store.dispatch("addList", { title: title.value }); // title.value として参照
-  title.value = ""; // title.value として更新
+  store.dispatch("addlist", { title: title }); // title.value として参照
+  title = ""; // title.value として更新
 };
 
 // フォーカスされる：ユーザビリティなクリックの実現
@@ -27,6 +27,10 @@ const classes = computed(() => {
   }
   return classList;
 });
+
+const titleExists = computed(() => {
+  return title.value.length > 0;
+});
 </script>
 
 <template>
@@ -39,6 +43,8 @@ const classes = computed(() => {
       @focusin="startEditing"
       @focusout="finishEditing"
     />
-    <button type="submit" class="add-button">Add</button>
+    <button type="submit" class="add-button" v-if="isEditing || titleExists">
+      Add
+    </button>
   </form>
 </template>
