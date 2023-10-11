@@ -2,6 +2,7 @@
 <script setup>
 import { defineProps } from "vue";
 import { useStore } from "vuex";
+import CardAdd from "./CardAdd.vue";
 
 // 親コンポーネントから受け取るデータを定義
 const props = defineProps({
@@ -29,5 +30,6 @@ const removeList = () => {
       <p class="list-title">{{ title }}</p>
       <div class="deletelist" @click="removeList">×</div>
     </div>
+    <CardAdd :listIndex="listIndex" />
   </div>
 </template>
