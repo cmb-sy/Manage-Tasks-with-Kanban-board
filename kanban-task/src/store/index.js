@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import { createStore } from "vuex";
 
-// ローカルストレージに保存されたものを取得。trello-listsは設定したキー
+// ローカルストレージに保存されたものを取得。trello-listsは設定したキーのこと。
 const savedLists = localStorage.getItem("trello-lists");
 
 const store = createStore({
@@ -29,7 +29,6 @@ const store = createStore({
     addlist(state, payload) {
       state.lists.push({ title: payload.title, cards: [] });
     },
-
     removelist(state, payload) {
       state.lists.splice(payload.listIndex, 1);
     },
@@ -37,6 +36,7 @@ const store = createStore({
       state.lists[payload.listIndex].cards.push({ body: payload.body });
     },
   },
+
   actions: {
     addlist(context, payload) {
       context.commit("addlist", payload);
@@ -44,11 +44,11 @@ const store = createStore({
     removelist(context, payload) {
       context.commit("removelist", payload);
     },
-
     addCardToList(context, payload) {
       context.commit("addCardToList", payload);
     },
   },
+
   getters: {},
 });
 
@@ -57,7 +57,7 @@ store.subscribe((mutation, state) => {
 });
 
 const app = createApp({});
-app.use(store); // Vue 3.0ではapp.useでVuexを使用します
-app.mount("#app"); // あなたのVueアプリケーションに適したマウントポイントを指定してください
+app.use(store); // Vue 3.0ではapp.useでVuexを使用
+app.mount("#app");
 
 export default store;
