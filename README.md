@@ -5,7 +5,8 @@ A task management tool for personal use.
 # features to be implemented in the future
 - Automatic background setting
 - Login
-  
+- DB coordination for data
+ 
 # Technology
 - vue3.x
 - vuex
