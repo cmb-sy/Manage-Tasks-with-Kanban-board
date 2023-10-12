@@ -35,6 +35,9 @@ const store = createStore({
     addCardToList(state, payload) {
       state.lists[payload.listIndex].cards.push({ body: payload.body });
     },
+    removeCardFromList(state, payload) {
+      state.lists[payload.listIndex].cards.splice(payload.cardIndex, 1);
+    },
   },
 
   actions: {
@@ -47,9 +50,18 @@ const store = createStore({
     addCardToList(context, payload) {
       context.commit("addCardToList", payload);
     },
+    removeCardFromList(context, payload) {
+      context.commit("removeCardFromList", payload);
+    },
   },
 
-  getters: {},
+  getters: {
+    totalCardCount(state) {
+      let count = 0;
+      state.lists.map((content) => (count += content.cards.length));
+      return count;
+    },
+  },
 });
 
 store.subscribe((mutation, state) => {
