@@ -23,9 +23,9 @@ const movingList = () => {
 
 <template>
   <div>
-    <header>my Trello</header>
+    <header>Original Trello</header>
     <main>
-      <p class="info-line">{{ totalCardCount }} tasks</p>
+      <p class="info-line">ALL : {{ totalCardCount }} tasks</p>
       <div class="list-index">
         <draggable :list="slists" @end="movingList">
           <template #item="{ element, index }">
