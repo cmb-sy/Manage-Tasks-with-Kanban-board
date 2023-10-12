@@ -44,8 +44,8 @@ main {
 }
 
 .text-input {
-  padding: 20px 15px;
-  width: calc(100% - 30px);
+  padding: 10px 10px;
+  width: calc(80% - 30px);
   background-color: #ccc;
   border-radius: 8px;
   cursor: pointer;

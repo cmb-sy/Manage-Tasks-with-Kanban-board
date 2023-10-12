@@ -3,7 +3,7 @@ import ListAdd from "./ListAdd.vue";
 import ListList from "./ListList.vue";
 import { useStore } from "vuex";
 
-const store = useStore(); // ストアを取得
+const store = useStore();
 const lists = store.state.lists; // const { lists } = mapState(["lists"]); ← オプションAPIしか使えない。
 </script>
 
