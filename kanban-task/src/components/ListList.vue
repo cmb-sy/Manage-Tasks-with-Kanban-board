@@ -4,6 +4,7 @@ import { defineProps, computed } from "vue";
 import { useStore } from "vuex";
 import CardAdd from "./CardAdd.vue";
 import CardCard from "./CardCard.vue";
+import draggable from "vuedraggable";
 
 const store = useStore();
 
@@ -43,13 +44,16 @@ const totalCardInList = computed(() => {
       <p class="list-counter">total: {{ totalCardInList }}</p>
       <div class="deletelist" @click="removeList">×</div>
     </div>
-    <CardCard
-      v-for="(item, index) in cards"
-      :body="item.body"
-      :key="item.key"
-      :cardIndex="index"
-      :listIndex="listIndex"
-    />
+    <draggable group="cards" :list="cards" @end="$emit('change')">
+      <template #item="{ element, index }">
+        <CardCard
+          :body="element.body"
+          :key="element.key"
+          :cardIndex="index"
+          :listIndex="listIndex"
+        />
+      </template>
+    </draggable>
     <CardAdd :listIndex="listIndex" />
   </div>
 </template>
