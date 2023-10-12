@@ -2,9 +2,15 @@
 A task management tool for personal use.
 **Not yet completed, still in development**
 
+# features to be implemented in the future
+- Automatic background setting
+- Login
+  
 # Technology
-- Vue3.x
-- Vuex<br>
+- vue3.x
+- vuex
+- vue.draggable.next
+<br>
 If you want to know the versions related to vue, please refer to the package.json.
 
 # Demo
