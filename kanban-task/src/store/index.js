@@ -1,4 +1,3 @@
-import { createApp } from "vue";
 import { createStore } from "vuex";
 
 // ローカルストレージに保存されたものを取得。trello-listsは設定したキーのこと。
@@ -73,9 +72,5 @@ const store = createStore({
 store.subscribe((mutation, state) => {
   localStorage.setItem("trello-lists", JSON.stringify(state.lists));
 });
-
-const app = createApp({});
-app.use(store); // Vue 3.0ではapp.useでVuexを使用
-app.mount("#app");
 
 export default store;
