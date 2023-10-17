@@ -1,9 +1,22 @@
 <script setup>
-import BackBoard from "./components/BackBoard.vue";
+// import BackBoard from "./components/BackBoard.vue";
 </script>
 
 <template>
   <div id="app">
-    <BackBoard />
+    <div id="nav">
+      <router-link to="/">Home</router-link>
+      <router-link to="/singup">Sing up</router-link>
+      <router-link to="/singin">Sing in</router-link>
+      <router-link to="/singout">Sing out</router-link>
+      <router-link to="/mypage">Mypage</router-link>
+    </div>
+    <router-view />
   </div>
 </template>
+
+<!-- <template>
+  <div id="app">
+    <BackBoard />
+  </div>
+</template> -->

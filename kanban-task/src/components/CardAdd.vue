@@ -4,6 +4,9 @@ import { useStore } from "vuex";
 
 const body = ref("");
 const isEditing = ref(false);
+const store = useStore();
+
+// 親コンポーネントのデータ取得
 const props = defineProps({
   listIndex: {
     type: Number,
@@ -11,7 +14,7 @@ const props = defineProps({
   },
 });
 
-const store = useStore();
+
 const addCardToList = () => {
   store.dispatch("addCardToList", {
     body: body.value,
@@ -20,7 +23,7 @@ const addCardToList = () => {
     (body.value = "");
 };
 
-// フォーカスされる：ユーザビリティなクリックの実現
+
 const startEditing = () => {
   isEditing.value = true;
 };
