@@ -1,6 +1,9 @@
 <script setup>
 // import BackBoard from "./components/BackBoard.vue";
+<<<<<<< HEAD
 // import TestTest from "./components/TestTest.vue";
+=======
+>>>>>>> e8d183d58626e8ea917bfdce498e62d28e8f8305
 </script>
 
 <!-- <template>
