@@ -1,13 +1,13 @@
 <script setup>
 // import BackBoard from "./components/BackBoard.vue";
-import TestTest from "./components/TestTest.vue";
+// import TestTest from "./components/TestTest.vue";
 </script>
 
-<template>
-  <TestTest />
-</template>
-
 <!-- <template>
+  <TestTest />
+</template> -->
+
+<template>
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link>
@@ -18,7 +18,7 @@ import TestTest from "./components/TestTest.vue";
     </div>
     <router-view />
   </div>
-</template> -->
+</template>
 
 <!-- <template>
   <div id="app">
