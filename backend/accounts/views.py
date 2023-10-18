@@ -7,10 +7,9 @@ import json
 
 class SampleAPIView(APIView):
     def post(self, request):
-        print("requestの中身", request)
         tmp = json.loads(request.body)
-        print("jsonの中身", tmp)
-        print("requestのメソッド確認", request.method)
+        print("jsonの中身 : ", tmp)
+        print("requestのメソッド確認 : ", request.method)
         if request.method == "POST":  # 大文字であること
             # リクエストデータの取得
             data = json.loads(request.body)

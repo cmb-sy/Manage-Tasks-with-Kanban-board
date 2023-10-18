@@ -1,17 +1,23 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Singin from "../components/SignIn.vue";
-import Mypage from "../components/MyPage.vue";
+import SignUp from "../components/authentication/SingnUp.vue";
+import SignIn from "../components/authentication/SignIn.vue";
+import SingnOut from "../components/authentication/SignOut.vue";
 
 const routes = [
   {
-    path: "/singin",
-    name: "singin",
-    component: Singin,
+    path: "/signin",
+    name: "signin",
+    component: SignIn,
   },
   {
-    path: "/mypage",
-    name: "mypage",
-    component: Mypage,
+    path: "/signup",
+    name: "signup",
+    component: SignUp,
+  },
+  {
+    path: "/signout",
+    name: "signout",
+    component: SingnOut,
   },
 ];
 
