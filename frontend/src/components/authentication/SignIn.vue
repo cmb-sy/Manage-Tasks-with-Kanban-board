@@ -1,6 +1,5 @@
 <script setup>
-// import { ref, onMounted } from "vue";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import axios from "axios";
 
 const userData = ref({
@@ -22,7 +21,7 @@ const signIn = async () => {
 };
 
 // onMounted: Vue3のコンポーネントがマウントされたときに実行されるコード
-// onMounted(signIn);
+onMounted(signIn);
 </script>
 
 <template>
