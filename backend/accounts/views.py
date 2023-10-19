@@ -1,46 +1,57 @@
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny
+from rest_framework.generics import GenericAPIView
 
-from accounts.serializers import UserSerializer
+from accounts.serializers import RegisterSerializer, LoginSerializer
+from accounts.models import User, AccessToken
 
-from django.http import JsonResponse
 import json
 
 
-class SampleAPIView(APIView):
-    def post(self, request):
-        tmp = json.loads(request.body)
-        print("jsonの中身 : ", tmp)
-        print("requestのメソッド確認 : ", request.method)
-        if request.method == "POST":  # 大文字であること
-            # リクエストデータの取得
-            data = json.loads(request.body)
-            # データの処理
-            # 例: データをデータベースに保存
-            # 例: データを加工してレスポンスを作成
-            response_data = {"message": "データを受け取りました", "data": data}
-            return Response(response_data, status=status.HTTP_200_OK)
-        else:
-            return JsonResponse({"message": "POSTリクエストのみ受け付けています"})
+class RegisterView(APIView):
+    @staticmethod
+    def post(request, *args, **kwargs):
+        request_data = json.loads(request.body.decode("utf-8", "ignore"))[
+            "_value"
+        ]  # Jsonファイルの取り出し
+        serializer = RegisterSerializer(data=request_data)
 
+        print(serializer)
+        if serializer.is_valid(raise_exception=True):
+            try:
+                serializer.save()  # データベースへの保存
+            except:
+                # データベースエラー
+                return Response(
+                    {"error": 11}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                )
 
-class LoginView(ObtainAuthToken):
-    # ログインに成功した際のレスポンスをカスタマイズ
-    def post(self, request, *args, **kwargs):
-        # tmp = json.loads(request.body)
-        print("jsonの中身 : ", request.data)
-        username = request.data.get("_value")
-        print(username["username"])
-        serializer = UserSerializer(data=request.data, context={"request": request})
-
-        if serializer.is_valid():
-            user = serializer.validated_data["user"]
-            token, created = Token.objects.get_or_create(user=user)
-            return Response(
-                {"token": token.key, "user_id": user.pk, "email": user.email}
-            )
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class LoginView(GenericAPIView):
+    permission_classes = [AllowAny]
+    serializer_class = LoginSerializer
+
+    def post(self, request, *args, **kwargs):
+        request_data = json.loads(request.body.decode("utf-8", "ignore"))[
+            "_value"
+        ]  # Jsonファイルの取り出し
+        serializer = LoginSerializer(data=request_data)  # 新しいインスタンスを作成
+
+        if serializer.is_valid(raise_exception=True):
+            user = User.objects.get(username=serializer.validated_data["username"])
+            username = serializer.validated_data["username"]
+            token = AccessToken.create(user)
+            return Response(
+                {
+                    "detail": "ログインが成功しました。",
+                    "error": 0,
+                    "token": token.token,
+                    "username": username,
+                }
+            )
+        return Response({"error": 1}, status=status.HTTP_400_BAD_REQUEST)

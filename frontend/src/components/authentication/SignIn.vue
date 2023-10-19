@@ -9,12 +9,17 @@ const userData = ref({
 });
 
 const signIn = async () => {
-  // const userJsonData = JSON.stringify(userData);
+  const userJsonData = JSON.stringify(userData);
+  console.log(userJsonData);
   try {
-    const response = await axios.post("/accounts/login/", userData);
+    const response2 = await axios.post(
+      "http://127.0.0.1:8000/accounts/login/",
+      userData
+    );
     // 非同期：レスポンスが受信されるまで待機
-    // const response = await axios.post("/accounts/login/", userJsonData);
-    console.log(response);
+
+    console.log(response2);
+    // console.log(response);
   } catch (e) {
     console.error(e);
   }
@@ -28,6 +33,7 @@ const signIn = async () => {
 <template>
   <div class="signin">
     <h1>サインインページ</h1>
+    {{ response2 }}
     <form>
       <input type="text" placeholder="ユーザ名" v-model="userData.username" />
       <input

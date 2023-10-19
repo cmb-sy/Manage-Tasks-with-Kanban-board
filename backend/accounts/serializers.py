@@ -1,22 +1,31 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
+from accounts.models import User
 
 
-class UserSerializer(serializers.ModelSerializer):
-    # パスワードフィールドに関する追加の設定
-    password = serializers.CharField(
-        write_only=True, style={"input_type": "password"}, trim_whitespace=False
-    )
-    username = serializers.CharField(max_length=255)
-
+# アカウント登録
+class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ("username", "password")
+        fields = ("password", "username", "email")  # 登録するもの。idは自動付与するため省く。
+
+        def create(self, validated_data):
+            user = User.objects.create_user(**validated_data)
+            return user
 
 
-# class UserSerializer(serializers.ModelSerializer):
-#     # パスワードフィールドに関する追加の設定
-#     password = serializers.CharField(
-#         write_only=True, style={"input_type": "password"}, trim_whitespace=False
-#     )
-#     name = serializers.CharField(required=False, max_length=255)
+# ログイン
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField(max_length=255, write_only=True)
+    password = serializers.CharField(write_only=True, style={"input_type": "password"})
+
+    def validate(self, data):
+        username = data.get("username")
+        password = data.get("password")
+        user_name = User.objects.get(username=username)
+        re_password = User.objects.get(password=password)
+        if username == user_name.username:
+            if password == re_password.password:
+                return data
+
+            else:
+                raise serializers.ValidationError("ログイン失敗")
