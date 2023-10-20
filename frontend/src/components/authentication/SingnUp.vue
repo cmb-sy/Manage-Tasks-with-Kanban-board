@@ -27,7 +27,8 @@ const signUp = async () => {
 </script>
 
 <template>
-  <h1>サインアップページ</h1>
+  <h2>サインアップフォーム</h2>
+  <p>本サイトにユーザ登録する方はこちらから</p>
   <form>
     <div class="ml-3 mt-4 w-50">
       <div class="mt-4">

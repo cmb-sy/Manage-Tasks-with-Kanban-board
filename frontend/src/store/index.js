@@ -58,7 +58,6 @@ const store = createStore({
   },
 
   actions: {
-    // タスクカード用
     addlist(context, payload) {
       context.commit("addlist", payload);
     },
@@ -90,7 +89,7 @@ const store = createStore({
   },
 });
 
-store.subscribe((state) => {
+store.subscribe((mutation, state) => {
   localStorage.setItem("trello-lists", JSON.stringify(state.lists));
 });
 

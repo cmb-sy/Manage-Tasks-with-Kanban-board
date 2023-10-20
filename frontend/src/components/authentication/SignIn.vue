@@ -43,24 +43,44 @@ const updateUserAuthentication = (authnticationJson) => {
 
 <template>
   <div class="signin">
-    <h1>サインインページ</h1>
-    <form>
-      <input type="text" placeholder="ユーザ名" v-model="userData.username" />
-      <input
-        type="password"
-        placeholder="パスワード"
-        v-model="userData.password"
+    <head>
+      <meta charset="utf-8" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
+      <title>ログイン</title>
+    </head>
+    <form class="text-center card">
+      <div class="card-body">
+        <h1 class="card-title">
+          <img src="../../assets/css/img/accountIcon.png" alt="ログイン" />
+        </h1>
+        <p class="card-text">
+          <input
+            class="form-control"
+            type="text"
+            placeholder="username"
+            v-model="userData.username"
+          />
+        </p>
+        <p class="card-text">
+          <input
+            class="form-control"
+            type="password"
+            placeholder="password"
+            v-model="userData.password"
+          />
+        </p>
+        <p class="card-text">
+          <button v-on:click="signIn" class="btn btn-primary">
+            サインイン
+          </button>
+        </p>
+        <!-- <p class="card-text"> -->
+        <router-link to="/signup">アカウント登録をしてください</router-link>
+        <!-- </p> -->
+      </div>
     </form>
-    <button v-on:click="signIn">サインイン</button>
-    <p>
-      <router-link to="/signup">アカウント登録をしてください</router-link>
-    </p>
   </div>
 </template>
-
-<!-- <template>
-  <div id="app">
-    <BackBoard />
-  </div>
-</template> -->

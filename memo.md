@@ -23,3 +23,8 @@ pip freeze > requirements.txt
 - リフレッシュトークンによるセッション管理
 - 背景を変更できるようにすること
 - カードを DB 保存
+
+# 参考 URL
+
+ログインフォームのブートストラップ
+https://www.zealseeds.com/SysDevTech/bootstrap/howto/login-page/index.html
