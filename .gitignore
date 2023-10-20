@@ -1,9 +1,17 @@
+# python＆django
 venv
 db.sqlite3
-.vscode
 __pycache__
 *.pyc
+
+# meta
+.vscode
 .DS_Store
+
+# myFile
+memo.md
+memo.md
+# vue
 node_modules
 
 # local env files

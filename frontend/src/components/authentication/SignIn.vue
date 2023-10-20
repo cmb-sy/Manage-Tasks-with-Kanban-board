@@ -1,6 +1,4 @@
 <script setup>
-// import BackBoard from "./components/BackBoard.vue";
-
 import { ref } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
@@ -29,7 +27,7 @@ const signIn = async () => {
     alert("ログインに失敗しました");
     console.error(e);
   }
-  // userData.value = ""; // 入力文字のリセット
+  userData.value = ""; // 入力文字のリセット
 };
 
 // onMounted: Vue3のコンポーネントがマウントされたときに実行されるコード

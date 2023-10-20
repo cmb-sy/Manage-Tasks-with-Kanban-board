@@ -4,14 +4,15 @@ import { useStore } from "vuex"; // useStore フックを追加
 
 let title = ref("");
 let isEditing = ref("");
+
 const store = useStore(); // ストアを取得
 
+// リストの追加
 const addList = () => {
-  store.dispatch("addlist", { title: title.value }); // title.value として参照
-  title.value = ""; // title.value として更新
+  store.dispatch("addlist", { title: title.value });
+  title.value = ""; //追加後に入力フォームを空欄にする
 };
 
-// フォーカスされる：ユーザビリティなクリックの実現
 const startEditing = () => {
   isEditing.value = true;
 };
@@ -20,10 +21,11 @@ const finishEditing = () => {
   isEditing.value = false;
 };
 
+// class属性にactive要素を加える関数
 const classes = computed(() => {
   const classList = ["addlist"];
   if (isEditing.value) {
-    classList.push("active");
+    classList.push("active"); //classListにactive文字列を追加
   }
   return classList;
 });

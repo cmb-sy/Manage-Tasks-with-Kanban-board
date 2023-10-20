@@ -58,10 +58,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "mysite.wsgi.application"
 
-
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -71,8 +67,6 @@ DATABASES = {
 
 
 # Password validation
-# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -104,14 +98,13 @@ REST_FRAMEWORK = {
 # これがないと自動で番号を振ってくれない。
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
+# クロスオリジン設定：許可するオリジンのリストにブラウザの起動元を追加
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",  # 許可するオリジンのリストにブラウザの起動元を追加
+    "http://localhost:8080",
 ]
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/4.1/topics/i18n/
-
 LANGUAGE_CODE = "ja"
 
 TIME_ZONE = "Asia/Tokyo"
