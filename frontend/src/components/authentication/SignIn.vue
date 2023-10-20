@@ -1,39 +1,51 @@
 <script setup>
+// import BackBoard from "./components/BackBoard.vue";
+
 import { ref } from "vue";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 import axios from "axios";
+
+const store = useStore();
+const $router = useRouter();
 
 const userData = ref({
   username: "nakashima",
-  // email: "",
   password: "Hogehoge1234!!",
 });
 
+// アクセストークンを受け取り保存できたらログイン成功
 const signIn = async () => {
-  const userJsonData = JSON.stringify(userData);
-  console.log(userJsonData);
   try {
-    const response2 = await axios.post(
-      "http://127.0.0.1:8000/accounts/login/",
-      userData
-    );
     // 非同期：レスポンスが受信されるまで待機
+    const response = await axios.post(
+      "http://127.0.0.1:8000/accounts/login/",
+      userData.value
+    );
 
-    console.log(response2);
-    // console.log(response);
+    updateUserAuthentication(response); //tokenとusernameの保存
+    $router.push("/backboard");
   } catch (e) {
+    alert("ログインに失敗しました");
     console.error(e);
   }
-  // userData.value = "";
+  // userData.value = ""; // 入力文字のリセット
 };
 
 // onMounted: Vue3のコンポーネントがマウントされたときに実行されるコード
 // onMounted(signIn);
+
+const updateUserAuthentication = (authnticationJson) => {
+  store.dispatch("updateAuthentication", {
+    token: authnticationJson.data.token,
+    username: authnticationJson.data.username,
+  });
+};
 </script>
 
 <template>
   <div class="signin">
     <h1>サインインページ</h1>
-    {{ response2 }}
     <form>
       <input type="text" placeholder="ユーザ名" v-model="userData.username" />
       <input
@@ -48,3 +60,9 @@ const signIn = async () => {
     </p>
   </div>
 </template>
+
+<!-- <template>
+  <div id="app">
+    <BackBoard />
+  </div>
+</template> -->

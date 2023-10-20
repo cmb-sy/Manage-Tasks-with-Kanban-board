@@ -6,6 +6,7 @@ const savedLists = localStorage.getItem("trello-lists");
 const store = createStore({
   state: {
     // 条件 ? trueなら実行 : falseなら実行
+    // タスクカード用
     lists: savedLists
       ? JSON.parse(savedLists)
       : [
@@ -22,9 +23,18 @@ const store = createStore({
             cards: [],
           },
         ],
+
+    // 認証用
+    authentication: [
+      {
+        token: "",
+        username: "",
+      },
+    ],
   },
 
   mutations: {
+    // タスクカード用
     addlist(state, payload) {
       state.lists.push({ title: payload.title, cards: [] });
     },
@@ -40,9 +50,15 @@ const store = createStore({
     updateList(state, payload) {
       state.lists = payload.lists;
     },
+
+    // 認証用
+    updateAuthentication(state, payload) {
+      state.authentication = payload.authentication;
+    },
   },
 
   actions: {
+    // タスクカード用
     addlist(context, payload) {
       context.commit("addlist", payload);
     },
@@ -58,6 +74,11 @@ const store = createStore({
 
     updateList(context, payload) {
       context.commit("updateList", payload);
+    },
+
+    // 認証用
+    updateAuthentication(context, payload) {
+      context.commit = ("updateAuthentication", payload);
     },
   },
   getters: {

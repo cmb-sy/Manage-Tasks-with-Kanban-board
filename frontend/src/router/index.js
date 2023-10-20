@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import SignUp from "../components/authentication/SingnUp.vue";
 import SignIn from "../components/authentication/SignIn.vue";
 import SingnOut from "../components/authentication/SignOut.vue";
+import BackBoard from "../components/BackBoard.vue";
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: "/signout",
     name: "signout",
     component: SingnOut,
+  },
+  {
+    path: "/backboard",
+    name: "backboard",
+    component: BackBoard,
   },
 ];
 

@@ -13,12 +13,8 @@ import json
 class RegisterView(APIView):
     @staticmethod
     def post(request, *args, **kwargs):
-        request_data = json.loads(request.body.decode("utf-8", "ignore"))[
-            "_value"
-        ]  # Jsonファイルの取り出し
-        serializer = RegisterSerializer(data=request_data)
+        serializer = RegisterSerializer(data=request.data)
 
-        print(serializer)
         if serializer.is_valid(raise_exception=True):
             try:
                 serializer.save()  # データベースへの保存
@@ -37,10 +33,7 @@ class LoginView(GenericAPIView):
     serializer_class = LoginSerializer
 
     def post(self, request, *args, **kwargs):
-        request_data = json.loads(request.body.decode("utf-8", "ignore"))[
-            "_value"
-        ]  # Jsonファイルの取り出し
-        serializer = LoginSerializer(data=request_data)  # 新しいインスタンスを作成
+        serializer = LoginSerializer(data=request.data)  # 新しいインスタンスを作成
 
         if serializer.is_valid(raise_exception=True):
             user = User.objects.get(username=serializer.validated_data["username"])

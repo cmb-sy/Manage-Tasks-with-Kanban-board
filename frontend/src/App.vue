@@ -1,6 +1,4 @@
-<script setup>
-// import BackBoard from "./components/BackBoard.vue";
-</script>
+<script setup></script>
 
 <template>
   <div id="app">
@@ -10,9 +8,3 @@
     <router-view />
   </div>
 </template>
-
-<!-- <template>
-  <div id="app">
-    <BackBoard />
-  </div>
-</template> -->
