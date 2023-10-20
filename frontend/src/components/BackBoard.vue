@@ -1,12 +1,13 @@
 <script setup>
-import ListAdd from "./ListAdd.vue";
-import ListList from "./ListList.vue";
 import { useStore } from "vuex";
 import { computed } from "vue";
 import draggable from "vuedraggable";
 
+import ListAdd from "./ListAdd.vue";
+import ListList from "./ListList.vue";
+
 const store = useStore();
-const slists = store.state.lists; // const { lists } = mapState(["lists"]); ← オプションAPIしか使えない。
+const slists = store.state.lists;
 
 const totalCardCount = computed(() => {
   return store.getters.totalCardCount;
@@ -23,7 +24,6 @@ const movingList = () => {
 
 <template>
   <div>
-    <header>Original Trello</header>
     <main>
       <p class="info-line">ALL : {{ totalCardCount }} tasks</p>
       <div class="list-index">

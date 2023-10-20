@@ -1,14 +1,17 @@
-<!-- リスト自体 -->
+<!--  -->
 <script setup>
+// ライブラリ
 import { defineProps, computed } from "vue";
 import { useStore } from "vuex";
+import draggable from "vuedraggable";
+
+// 親コンポーネント
 import CardAdd from "./CardAdd.vue";
 import CardCard from "./CardCard.vue";
-import draggable from "vuedraggable";
 
 const store = useStore();
 
-// 親コンポーネントから受け取るデータを定義
+// 親コンポーネントのデータを参照
 const props = defineProps({
   title: {
     type: String,
@@ -26,12 +29,14 @@ const props = defineProps({
   },
 });
 
+// リストの削除
 const removeList = () => {
   if (confirm("本当にこのリストを削除しますか？")) {
     store.dispatch("removelist", { listIndex: props.listIndex });
   }
 };
 
+// リストのカード数
 const totalCardInList = computed(() => {
   return props.cards.length;
 });
@@ -44,7 +49,9 @@ const totalCardInList = computed(() => {
       <p class="list-counter">total: {{ totalCardInList }}</p>
       <div class="deletelist" @click="removeList">×</div>
     </div>
-    <draggable group="cards" :list="cards" @end="$emit('change')">
+
+    <draggable group="cards" :list="cards" @end="$emit('change')"
+      ><!--emitで親コンポーネントのchangeイベントを呼ぶ-->
       <template #item="{ element, index }">
         <CardCard
           :body="element.body"

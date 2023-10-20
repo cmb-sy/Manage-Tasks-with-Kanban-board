@@ -4,7 +4,7 @@ import { useStore } from "vuex";
 
 const store = useStore();
 
-// 親コンポーネントのデータ取得
+// 親コンポーネントのデータを参照
 const props = defineProps({
   body: {
     type: String,

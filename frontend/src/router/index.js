@@ -1,3 +1,9 @@
+/**
+ * ルーティング先を定義する。その結果、以下のように書き込めるようになる。
+ * templateにて：router-link to="/signup">hogehoge</router-link>
+ * scriptにて：$router.push("/backboard");
+ */
+
 import { createRouter, createWebHistory } from "vue-router";
 import SignUp from "../components/authentication/SingnUp.vue";
 import SignIn from "../components/authentication/SignIn.vue";

@@ -90,7 +90,7 @@ const store = createStore({
   },
 });
 
-store.subscribe((mutation, state) => {
+store.subscribe((state) => {
   localStorage.setItem("trello-lists", JSON.stringify(state.lists));
 });
 
