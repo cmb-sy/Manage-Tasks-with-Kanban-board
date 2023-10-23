@@ -1,6 +1,9 @@
 <script setup>
 import { ref } from "vue";
 import axios from "axios";
+import { useRouter } from "vue-router";
+
+const $router = useRouter();
 
 const userSignupData = ref({
   username: "",
@@ -16,7 +19,9 @@ const signUp = async () => {
     );
     // 非同期：レスポンスが受信されるまで待機
     console.log(response);
+    $router.push("/backboard");
   } catch (e) {
+    alert("サインアップに失敗しました");
     console.error(e);
   }
   userSignupData.value = "";
@@ -27,7 +32,7 @@ const signUp = async () => {
   <h2>サインアップ</h2>
   <p>本サイトにユーザ登録する方はこちらから</p>
   <form>
-    <div class="ml-3 mt-4 w-50">
+    <div class="mb-3">
       <div class="mt-4">
         <p style="font-size: 20px">ユーザー名</p>
         <input
