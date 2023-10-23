@@ -27,13 +27,13 @@ const signUp = async () => {
 };
 </script>
 <template>
-  <div class="signup-form">
-    <h2 class="signup-form-title">サインアップ</h2>
+  <div class="sign-form">
+    <h2 class="sign-form-title">サインアップ</h2>
     <p>本サイトにユーザ登録する方はこちらから</p>
     <p><router-link to="/signin">サインインへ戻る</router-link></p>
 
     <form>
-      <div class="signup-form-group">
+      <div class="sign-form-group">
         <label for="username">ユーザー名</label>
         <input
           type="text"
@@ -43,7 +43,7 @@ const signUp = async () => {
         />
       </div>
 
-      <div class="signup-form-group">
+      <div class="sign-form-group">
         <label for="email">メールアドレス</label>
         <input
           type="email"
@@ -54,7 +54,7 @@ const signUp = async () => {
         />
       </div>
 
-      <div class="signup-form-group">
+      <div class="sign-form-group">
         <label for="password">パスワード</label>
         <input
           type="password"
@@ -64,13 +64,15 @@ const signUp = async () => {
         />
       </div>
 
-      <button
-        type="submit"
-        class="btn btn-primary signup-button"
-        v-on:click="signUp"
-      >
-        サインアップ
-      </button>
+      <div class="sign-button">
+        <button
+          type="submit"
+          class="btn btn-primary signup-button"
+          v-on:click="signUp"
+        >
+          サインアップ
+        </button>
+      </div>
     </form>
   </div>
 </template>

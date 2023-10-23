@@ -104,8 +104,8 @@ main {
   margin: 0 5px auto;
   position: relative;
   display: inline-block;
-  /* flex-direction: column; */
-  /* align-items: flex-start; */
+  flex-direction: column;
+  align-items: flex-start;
   min-width: 290px;
   width: 290px;
   background-color: whitesmoke; /*  リストの背景の色 */
@@ -185,7 +185,7 @@ main {
 
 .signout-center-item img {
   position: absolute;
-  top: 250px; /* テキストの上に配置したいだけの余白を設定 */
+  top: 70px; /* テキストの上に配置したいだけの余白を設定 */
   left: 50%; /* 画像を水平方向に中央に配置 */
   transform: translateX(-50%); /* 画像の中央配置を調整 */
   z-index: 1; /* 画像がテキストの上に表示されるようにz-indexを設定 */
@@ -194,7 +194,7 @@ main {
 .signin-center-item {
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: 120vh;
   max-width: 300px; /* 任意の幅に設定 */
   margin: 0 auto; /* 要素を水平方向に中央配置 */
 }
