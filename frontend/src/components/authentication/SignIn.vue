@@ -14,6 +14,7 @@ const userData = ref({
 
 // アクセストークンを受け取り保存できたらログイン成功
 const signIn = async () => {
+  console.log(userData.value);
   try {
     // 非同期：レスポンスが受信されるまで待機
     const response = await axios.post(
@@ -30,9 +31,6 @@ const signIn = async () => {
   userData.value = ""; // 入力文字のリセット
 };
 
-// onMounted: Vue3のコンポーネントがマウントされたときに実行されるコード
-// onMounted(signIn);
-
 const updateUserAuthentication = (authnticationJson) => {
   store.dispatch("updateAuthentication", {
     token: authnticationJson.data.token,
@@ -44,43 +42,36 @@ const updateUserAuthentication = (authnticationJson) => {
 <template>
   <div class="signin">
     <head>
-      <meta charset="utf-8" />
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, shrink-to-fit=no"
-      />
       <title>ログイン</title>
     </head>
-    <form class="text-center card">
-      <div class="card-body">
-        <h1 class="card-title">
-          <img src="../../assets/css/img/accountIcon.png" alt="ログイン" />
-        </h1>
-        <p class="card-text">
-          <input
-            class="form-control"
-            type="text"
-            placeholder="username"
-            v-model="userData.username"
-          />
-        </p>
-        <p class="card-text">
-          <input
-            class="form-control"
-            type="password"
-            placeholder="password"
-            v-model="userData.password"
-          />
-        </p>
-        <p class="card-text">
-          <button v-on:click="signIn" class="btn btn-primary">
-            サインイン
-          </button>
-        </p>
-        <!-- <p class="card-text"> -->
-        <router-link to="/signup">アカウント登録をしてください</router-link>
-        <!-- </p> -->
-      </div>
-    </form>
+    <!-- <form class="text-center card"> -->
+    <div class="card-body text-center card" style="text-align: center">
+      <h1 class="card-title">
+        <img src="../../assets/css/img/accountIcon.png" alt="ログイン" />
+      </h1>
+      <p class="card-text">
+        <input
+          class="form-control"
+          type="text"
+          placeholder="username"
+          v-model="userData.username"
+        />
+      </p>
+      <p class="card-text">
+        <input
+          class="form-control"
+          type="password"
+          placeholder="password"
+          v-model="userData.password"
+        />
+      </p>
+      <p class="card-text">
+        <button v-on:click="signIn" class="btn btn-primary">サインイン</button>
+      </p>
+      <p class="card-text" style="font-size: smaller">
+        サインアップは<router-link to="/signup">こちら</router-link>
+      </p>
+    </div>
+    <!-- </form> -->
   </div>
 </template>

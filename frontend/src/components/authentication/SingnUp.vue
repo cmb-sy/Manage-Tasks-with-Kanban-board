@@ -3,31 +3,28 @@ import { ref } from "vue";
 import axios from "axios";
 
 const userSignupData = ref({
-  username: "nakashima",
-  email: "free.freeman1214@gmail.com",
-  password: "Hogehoge1234!!",
+  username: "",
+  email: "",
+  password: "",
 });
 
 const signUp = async () => {
-  const userSignupJsonData = JSON.stringify(userSignupData);
   try {
-    const response2 = await axios.post(
+    const response = await axios.post(
       "http://127.0.0.1:8000/accounts/signup/",
-      userSignupJsonData
+      userSignupData.value
     );
     // 非同期：レスポンスが受信されるまで待機
-
-    console.log(response2);
-    // console.log(response);
+    console.log(response);
   } catch (e) {
     console.error(e);
   }
-  // userData.value = "";
+  userSignupData.value = "";
 };
 </script>
 
 <template>
-  <h2>サインアップフォーム</h2>
+  <h2>サインアップ</h2>
   <p>本サイトにユーザ登録する方はこちらから</p>
   <form>
     <div class="ml-3 mt-4 w-50">
@@ -66,6 +63,6 @@ const signUp = async () => {
     style="font-size: 20px"
     v-on:click="signUp"
   >
-    Submit
+    サインアップ
   </button>
 </template>

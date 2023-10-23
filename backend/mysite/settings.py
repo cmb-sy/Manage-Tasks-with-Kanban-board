@@ -10,7 +10,8 @@ SECRET_KEY = "django-insecure-pv-agb1-_+ab&b@0yk1er+b2)%0wmwg2$$u=*ugstr%_fo@ax7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+# 受け入れることができるホスト名やIPアドレスのリストを定義
+ALLOWED_HOSTS = ["127.0.0.1", "localhost8080"]
 
 # Application definition
 
@@ -95,7 +96,7 @@ REST_FRAMEWORK = {
     ),
 }
 
-# これがないと自動で番号を振ってくれない。
+# 自動で番号を振るために必要
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 # クロスオリジン設定：許可するオリジンのリストにブラウザの起動元を追加
