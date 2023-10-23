@@ -12,10 +12,9 @@ import axios from "axios";
 const store = useStore();
 const $router = useRouter();
 
-// オブジェクトはリアクティブに変更
 const userData = ref({
-  username: "",
-  password: "",
+  username: "test1",
+  password: "test1",
 });
 
 const signIn = async () => {
@@ -32,7 +31,9 @@ const signIn = async () => {
     alert("ログインに失敗しました");
     console.error(e);
   }
-  userData.value = ""; // 入力文字のリセット
+  // 入力文字のリセット
+  userData.value.username = "";
+  userData.value.password = "";
 };
 
 const updateUserAuthentication = (authnticationJson) => {
@@ -48,32 +49,42 @@ const updateUserAuthentication = (authnticationJson) => {
     <head>
       <title>ログイン</title>
     </head>
-    <div class="card-body text-center card" style="text-align: center">
-      <h1 class="card-title">
-        <img src="../../assets/css/img/accountIcon.png" alt="ログイン" />
-      </h1>
-      <p class="card-text">
-        <input
-          class="form-control"
-          type="text"
-          placeholder="username"
-          v-model="userData.username"
-        />
-      </p>
-      <p class="card-text">
-        <input
-          class="form-control"
-          type="password"
-          placeholder="password"
-          v-model="userData.password"
-        />
-      </p>
-      <p class="card-text">
-        <button v-on:click="signIn" class="btn btn-primary">サインイン</button>
-      </p>
-      <p class="card-text" style="font-size: smaller">
-        サインアップは<router-link to="/signup">こちら</router-link>
-      </p>
+    <div class="signin-center-item">
+      <div class="card-body text-center card">
+        <h1 class="card-title">
+          <img src="../../assets/css/img/accountIcon.png" alt="ログイン" />
+        </h1>
+        <p>Trelloにサインインする</p>
+
+        <div class="sign-form-group">
+          <label for="password">ユーザネーム</label>
+          <input
+            class="form-control"
+            type="text"
+            placeholder="username"
+            v-model="userData.username"
+          />
+        </div>
+
+        <div class="sign-form-group">
+          <label for="password">メールアドレス</label>
+          <input
+            class="form-control"
+            type="password"
+            placeholder="password"
+            v-model="userData.password"
+          />
+        </div>
+
+        <div class="sign-button">
+          <button v-on:click="signIn" class="btn btn-primary">
+            サインイン
+          </button>
+        </div>
+        <div class="sign-message">
+          サインアップは<router-link to="/signup">こちら</router-link>
+        </div>
+      </div>
     </div>
   </div>
 </template>

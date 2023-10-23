@@ -5,7 +5,7 @@
  */
 
 import { createRouter, createWebHistory } from "vue-router";
-import SignUp from "../components/authentication/SingnUp.vue";
+import SignUp from "../components/authentication/SignUp.vue";
 import SignIn from "../components/authentication/SignIn.vue";
 import SingnOut from "../components/authentication/SignOut.vue";
 import BackBoard from "../components/BackBoard.vue";

@@ -19,9 +19,25 @@ pip freeze > requirements.txt
 
 # 将来的にやること
 
+- ユーザ名の一意なものにする。
 - リフレッシュトークンによるセッション管理
 - 背景を変更できるようにすること
 - カードを DB 保存
+
+# メモ
+
+### 1
+
+reactive と ref では ref だけで使うのはよさそう。
+https://qiita.com/Yametaro/items/2a37f18fb52f7565b2cb
+
+### 2
+
+const userData = ref({
+username: "",
+password: "",
+});
+このとき、userData.value=""ではオブジェクトを空文字にする。そのため、username が template 内で入力したとき見つからなくなりエラーがでる。
 
 # 参考 URL
 
