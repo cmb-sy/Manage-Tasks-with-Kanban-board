@@ -13,11 +13,11 @@ const userSignupData = ref({
 
 const signUp = async () => {
   try {
+    // 非同期：レスポンスが受信されるまで待機
     const response = await axios.post(
       "http://127.0.0.1:8000/accounts/signup/",
       userSignupData.value
     );
-    // 非同期：レスポンスが受信されるまで待機
     console.log(response);
     $router.push("/backboard");
   } catch (e) {
@@ -31,6 +31,7 @@ const signUp = async () => {
 <template>
   <h2>サインアップ</h2>
   <p>本サイトにユーザ登録する方はこちらから</p>
+  <p><router-link to="/signin">サインインへ戻る</router-link></p>
   <form>
     <div class="mb-3">
       <div class="mt-4">

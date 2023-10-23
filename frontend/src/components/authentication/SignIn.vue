@@ -1,4 +1,9 @@
 <script setup>
+/**
+ * アクセストークンを受け取り保存できたらログイン成功。
+ * <form>で送るとBroken pipe from が発生する。serializerの受け取り方に問題ありなので、使う場合は修正が必要
+ */
+
 import { ref } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
@@ -7,14 +12,13 @@ import axios from "axios";
 const store = useStore();
 const $router = useRouter();
 
+// オブジェクトはリアクティブに変更
 const userData = ref({
-  username: "nakashima",
-  password: "Hogehoge1234!!",
+  username: "",
+  password: "",
 });
 
-// アクセストークンを受け取り保存できたらログイン成功
 const signIn = async () => {
-  console.log(userData.value);
   try {
     // 非同期：レスポンスが受信されるまで待機
     const response = await axios.post(
@@ -23,7 +27,7 @@ const signIn = async () => {
     );
 
     updateUserAuthentication(response); //tokenとusernameの保存
-    $router.push("/backboard");
+    $router.push("/backboard"); // backboardへルーティング
   } catch (e) {
     alert("ログインに失敗しました");
     console.error(e);
@@ -44,7 +48,6 @@ const updateUserAuthentication = (authnticationJson) => {
     <head>
       <title>ログイン</title>
     </head>
-    <!-- <form class="text-center card"> -->
     <div class="card-body text-center card" style="text-align: center">
       <h1 class="card-title">
         <img src="../../assets/css/img/accountIcon.png" alt="ログイン" />
@@ -72,6 +75,5 @@ const updateUserAuthentication = (authnticationJson) => {
         サインアップは<router-link to="/signup">こちら</router-link>
       </p>
     </div>
-    <!-- </form> -->
   </div>
 </template>
