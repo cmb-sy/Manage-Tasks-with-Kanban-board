@@ -24,7 +24,7 @@ const movingList = () => {
 
 <template>
   <div>
-    <nav>test</nav>
+    <nav><router-link to="/signout">サインアウト</router-link></nav>
     <main>
       <p class="info-line">ALL : {{ totalCardCount }} tasks</p>
       <div class="list-index">

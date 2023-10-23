@@ -55,6 +55,10 @@ const store = createStore({
     updateAuthentication(state, payload) {
       state.authentication = payload.authentication;
     },
+
+    removeAuthenticator(state) {
+      state.removeAuthentication = "";
+    },
   },
 
   actions: {
@@ -78,6 +82,10 @@ const store = createStore({
     // 認証用
     updateAuthentication(context, payload) {
       context.commit = ("updateAuthentication", payload);
+    },
+
+    removeAuthenticator(context) {
+      context.commit("removeAuthentication");
     },
   },
   getters: {
