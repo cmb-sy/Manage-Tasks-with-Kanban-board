@@ -1,16 +1,23 @@
 html {
-  background: #f0f8ff;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  background: white;
   font-family: "Avenir", Helvetica, Arial, "system-ui", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  width: 100%;
-  height: 100%;
-  overflow-x: scroll;
+}
+
+body {
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  vertical-align: middle;
 }
 
 header {
-  background: #b0c4de;
+  background: black;
   height: 70px;
   color: white;
   font-style: italic;
@@ -97,15 +104,15 @@ main {
   margin: 0 5px auto;
   position: relative;
   display: inline-block;
-  flex-direction: column;
-  align-items: flex-start;
+  /* flex-direction: column; */
+  /* align-items: flex-start; */
   min-width: 290px;
   width: 290px;
-  background-color: #e0e0e0;
-  border-radius: 8px;
-  padding: 15px;
-  border: solid #ddd 1px;
-  color: gray;
+  background-color: whitesmoke; /*  リストの背景の色 */
+  border-radius: 10px; /*  リストの背景の形 */
+  padding: 15px; /*  リストの位置 */
+  border: solid white 0px;
+  color: black; /*  リスト名の色 */
   vertical-align: top;
 }
 
@@ -116,14 +123,14 @@ main {
 }
 
 .list-title {
-  font-size: 20px;
-  font-weight: bold;
-  padding: 15px;
+  font-size: 30px; /* リスト名の大きさ */
+  font-weight: bold; /* リスト名を太字にする */
+  padding: 10px; /* リスト名の位置 */
 }
 
 .list-counter {
   color: rgb(0, 140, 255);
-  padding: 15px;
+  padding: 40px; /* totalの位置*/
 }
 
 .deletelist {
@@ -164,8 +171,77 @@ main {
   margin: 5px;
 }
 
-.body {
-  font-size: 18px;
+/* ---------------------------- */
+/* -------------認証------------ */
+/* ---------------------------- */
+.signout-center-item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.signout-center-item img {
+  position: absolute;
+  top: 250px; /* テキストの上に配置したいだけの余白を設定 */
+  left: 50%; /* 画像を水平方向に中央に配置 */
+  transform: translateX(-50%); /* 画像の中央配置を調整 */
+  z-index: 1; /* 画像がテキストの上に表示されるようにz-indexを設定 */
+}
+
+.signin-center-item {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  max-width: 300px; /* 任意の幅に設定 */
+  margin: 0 auto; /* 要素を水平方向に中央配置 */
+}
+
+.signin-center-item img {
+  position: absolute;
+  top: -150px; /* テキストの上に配置したいだけの余白を設定 */
+  left: 50%; /* 画像を水平方向に中央に配置 */
+  transform: translateX(-50%); /* 画像の中央配置を調整 */
+  z-index: 1; /* 画像がテキストの上に表示されるようにz-indexを設定 */
+}
+
+.sign-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.sign-form-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.sign-form-group {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.sign-form-control {
   width: 100%;
-  word-wrap: break-word;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.sign-button {
+  width: 100%;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.sign-message {
+  width: 100%;
+  font-size: 15px;
+  margin-top: 20px;
 }

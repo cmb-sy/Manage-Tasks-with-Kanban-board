@@ -1,4 +1,9 @@
 <script setup>
+/**
+ * アクセストークンを受け取り保存できたらログイン成功。
+ * <form>で送るとBroken pipe from が発生する。serializerの受け取り方に問題ありなので、使う場合は修正が必要
+ */
+
 import { ref } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
@@ -8,11 +13,10 @@ const store = useStore();
 const $router = useRouter();
 
 const userData = ref({
-  username: "nakashima",
-  password: "Hogehoge1234!!",
+  username: "test1",
+  password: "test1",
 });
 
-// アクセストークンを受け取り保存できたらログイン成功
 const signIn = async () => {
   try {
     // 非同期：レスポンスが受信されるまで待機
@@ -22,16 +26,15 @@ const signIn = async () => {
     );
 
     updateUserAuthentication(response); //tokenとusernameの保存
-    $router.push("/backboard");
+    $router.push("/backboard"); // backboardへルーティング
   } catch (e) {
     alert("ログインに失敗しました");
     console.error(e);
   }
-  userData.value = ""; // 入力文字のリセット
+  // 入力文字のリセット
+  userData.value.username = "";
+  userData.value.password = "";
 };
-
-// onMounted: Vue3のコンポーネントがマウントされたときに実行されるコード
-// onMounted(signIn);
 
 const updateUserAuthentication = (authnticationJson) => {
   store.dispatch("updateAuthentication", {
@@ -43,24 +46,45 @@ const updateUserAuthentication = (authnticationJson) => {
 
 <template>
   <div class="signin">
-    <h1>サインインページ</h1>
-    <form>
-      <input type="text" placeholder="ユーザ名" v-model="userData.username" />
-      <input
-        type="password"
-        placeholder="パスワード"
-        v-model="userData.password"
-      />
-    </form>
-    <button v-on:click="signIn">サインイン</button>
-    <p>
-      <router-link to="/signup">アカウント登録をしてください</router-link>
-    </p>
+    <head>
+      <title>ログイン</title>
+    </head>
+    <div class="signin-center-item">
+      <div class="card-body text-center card">
+        <h1 class="card-title">
+          <img src="../../assets/css/img/accountIcon.png" alt="ログイン" />
+        </h1>
+        <p>Trelloにサインインする</p>
+
+        <div class="sign-form-group">
+          <label for="password">ユーザネーム</label>
+          <input
+            class="form-control"
+            type="text"
+            placeholder="username"
+            v-model="userData.username"
+          />
+        </div>
+
+        <div class="sign-form-group">
+          <label for="password">メールアドレス</label>
+          <input
+            class="form-control"
+            type="password"
+            placeholder="password"
+            v-model="userData.password"
+          />
+        </div>
+
+        <div class="sign-button">
+          <button v-on:click="signIn" class="btn btn-primary">
+            サインイン
+          </button>
+        </div>
+        <div class="sign-message">
+          サインアップは<router-link to="/signup">こちら</router-link>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
-
-<!-- <template>
-  <div id="app">
-    <BackBoard />
-  </div>
-</template> -->

@@ -55,10 +55,13 @@ const store = createStore({
     updateAuthentication(state, payload) {
       state.authentication = payload.authentication;
     },
+
+    removeAuthenticator(state) {
+      state.removeAuthentication = "";
+    },
   },
 
   actions: {
-    // タスクカード用
     addlist(context, payload) {
       context.commit("addlist", payload);
     },
@@ -80,6 +83,10 @@ const store = createStore({
     updateAuthentication(context, payload) {
       context.commit = ("updateAuthentication", payload);
     },
+
+    removeAuthenticator(context) {
+      context.commit("removeAuthentication");
+    },
   },
   getters: {
     totalCardCount(state) {
@@ -90,7 +97,7 @@ const store = createStore({
   },
 });
 
-store.subscribe((state) => {
+store.subscribe((mutation, state) => {
   localStorage.setItem("trello-lists", JSON.stringify(state.lists));
 });
 
