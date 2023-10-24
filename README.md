@@ -1,18 +1,16 @@
 # overview
-
 A task management tool for personal use.
 **Not yet completed, still in development**
 
 ### Features
 - Trello-like column and task operations
 - System cannot be used without authentication
-- 
+  
 # Features to be implemented in the future
 - Automatic background setting
 - DB coordination for list, card data
 
 # Technology
-
 - frontend : vue3.x
 - backend : django
 
