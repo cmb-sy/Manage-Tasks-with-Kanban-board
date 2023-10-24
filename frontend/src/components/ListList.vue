@@ -1,4 +1,3 @@
-<!--  -->
 <script setup>
 // ライブラリ
 import { defineProps } from "vue";
@@ -42,8 +41,7 @@ const removeList = () => {
     <p class="list-title">{{ title }}</p>
     <div class="deletelist" @click="removeList">×</div>
 
-    <draggable group="cards" :list="cards" @end="$emit('change')"
-      ><!--emitで親コンポーネントのchangeイベントを呼ぶ-->
+    <draggable group="cards" :list="cards" @end="$emit('change')">
       <template #item="{ element, index }">
         <CardCard
           :body="element.body"
