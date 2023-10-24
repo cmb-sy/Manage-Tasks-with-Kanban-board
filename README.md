@@ -9,7 +9,8 @@ A task management tool for personal use.
 # Features to be implemented in the future
 - Automatic background setting
 - DB coordination for list, card data
-
+- Issue an access token after signing up
+  
 # Technology
 - frontend : vue3.x
 - backend : django
