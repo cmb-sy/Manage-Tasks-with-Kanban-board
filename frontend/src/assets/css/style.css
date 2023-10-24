@@ -2,11 +2,9 @@ html {
   height: 100%;
   margin: 0 auto;
   padding: 0;
-  background: white;
   font-family: "Avenir", Helvetica, Arial, "system-ui", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
 }
 
 body {
@@ -18,9 +16,7 @@ body {
 }
 
 header {
-  background: black;
   height: 70px;
-  color: white;
   font-style: italic;
   font-size: 40px;
   text-align: left;
@@ -113,7 +109,7 @@ main {
   flex-direction: column;
   align-items: flex-start;
   min-width: 290px;
-  width: 290px;
+  width: 250px;
   background-color: whitesmoke; /*  リストの背景の色 */
   border-radius: 10px; /*  リストの背景の形 */
   padding: 15px; /*  リストの位置 */
@@ -122,16 +118,13 @@ main {
   vertical-align: top;
 }
 
-.listheader {
-  width: 290px;
-  display: inline-flex;
-  justify-content: space-between;
-}
-
 .list-title {
   font-size: 30px; /* リスト名の大きさ */
   font-weight: bold; /* リスト名を太字にする */
   padding: 10px; /* リスト名の位置 */
+  margin-top: 30px; /* リストタイトルの上からの距離 */
+  word-wrap: break-word; /* 文字をはみ出さないように調整 */
+  white-space: pre-line; /* 高さ方向に改行 */
 }
 
 .list-counter {
@@ -162,8 +155,8 @@ main {
   width: 260px;
   cursor: pointer;
   border: solid 1px black;
-  word-wrap: break-word;
-  white-space: pre-line; /* 高さ方向にも改行 */
+  word-wrap: break-word; /* 文字をはみ出さないように調整 */
+  white-space: pre-line; /* 高さ方向に改行 */
 }
 
 .close-button {

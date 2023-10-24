@@ -39,10 +39,8 @@ const removeList = () => {
 
 <template>
   <div class="list">
-    <div class="listheader">
-      <p class="list-title">{{ title }}</p>
-      <div class="deletelist" @click="removeList">×</div>
-    </div>
+    <p class="list-title">{{ title }}</p>
+    <div class="deletelist" @click="removeList">×</div>
 
     <draggable group="cards" :list="cards" @end="$emit('change')"
       ><!--emitで親コンポーネントのchangeイベントを呼ぶ-->
