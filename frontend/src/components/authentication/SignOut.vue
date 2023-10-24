@@ -11,20 +11,18 @@ const signOut = () => {
 };
 </script>
 <template>
-  <div class="signout-center-item">
+  <div class="signout-center">
     <img src="../../assets/css/img/accountIcon.png" alt="ログイン" />
-    <div class="text-container">
-      <div class="card-body text-center card" style="text-align: center">
-        <p>本当にサインアウトしますか？</p>
-        <button
-          type="submit"
-          class="btn btn-primary"
-          style="font-size: 20px"
-          v-on:click="signOut"
-        >
-          サインアウト
-        </button>
-      </div>
+    <div class="text-center card">
+      <p>本当にサインアウトしますか？</p>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        style="font-size: 20px"
+        v-on:click="signOut"
+      >
+        サインアウト
+      </button>
     </div>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <!--  -->
 <script setup>
 // ライブラリ
-import { defineProps, computed } from "vue";
+import { defineProps } from "vue";
 import { useStore } from "vuex";
 import draggable from "vuedraggable";
 
@@ -35,20 +35,12 @@ const removeList = () => {
     store.dispatch("removelist", { listIndex: props.listIndex });
   }
 };
-
-// リストのカード数
-const totalCardInList = computed(() => {
-  return props.cards.length;
-});
 </script>
 
 <template>
   <div class="list">
-    <div class="listheader">
-      <p class="list-title">{{ title }}</p>
-      <p class="list-counter">total: {{ totalCardInList }}</p>
-      <div class="deletelist" @click="removeList">×</div>
-    </div>
+    <p class="list-title">{{ title }}</p>
+    <div class="deletelist" @click="removeList">×</div>
 
     <draggable group="cards" :list="cards" @end="$emit('change')"
       ><!--emitで親コンポーネントのchangeイベントを呼ぶ-->

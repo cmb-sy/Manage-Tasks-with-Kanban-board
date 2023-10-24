@@ -25,12 +25,10 @@ const store = createStore({
         ],
 
     // 認証用
-    authentication: [
-      {
-        token: "",
-        username: "",
-      },
-    ],
+    authentication: {
+      token: "",
+      username: "",
+    },
   },
 
   mutations: {
@@ -53,11 +51,13 @@ const store = createStore({
 
     // 認証用
     updateAuthentication(state, payload) {
-      state.authentication = payload.authentication;
+      state.authentication.token = payload.token;
+      state.authentication.username = payload.username;
     },
 
-    removeAuthenticator(state) {
-      state.removeAuthentication = "";
+    removeAuthentication(state) {
+      state.authentication.token = "";
+      state.authentication.username = "";
     },
   },
 
@@ -81,10 +81,10 @@ const store = createStore({
 
     // 認証用
     updateAuthentication(context, payload) {
-      context.commit = ("updateAuthentication", payload);
+      context.commit("updateAuthentication", payload);
     },
 
-    removeAuthenticator(context) {
+    removeAuthentication(context) {
       context.commit("removeAuthentication");
     },
   },
@@ -93,6 +93,10 @@ const store = createStore({
       let count = 0;
       state.lists.map((content) => (count += content.cards.length));
       return count;
+    },
+
+    getToken(state) {
+      return state.authentication.token;
     },
   },
 });

@@ -14,7 +14,6 @@ const props = defineProps({
   },
 });
 
-
 const addCardToList = () => {
   store.dispatch("addCardToList", {
     body: body.value,
@@ -22,7 +21,6 @@ const addCardToList = () => {
   }),
     (body.value = "");
 };
-
 
 const startEditing = () => {
   isEditing.value = true;
@@ -54,12 +52,14 @@ const bodyExists = computed(() => {
       v-model="body"
       type="text"
       class="text-input"
-      placeholder="Add new card"
+      placeholder="カードを追加"
       @focusin="startEditing"
       @focusout="finishEditing"
     />
+    <br />
+    <!--  改行をいれる -->
     <button type="submit" class="add-button" v-if="isEditing || bodyExists">
-      Add
+      追加
     </button>
   </form>
 </template>

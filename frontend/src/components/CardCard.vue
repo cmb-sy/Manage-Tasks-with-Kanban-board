@@ -33,8 +33,8 @@ const removeCardFromList = () => {
 <template>
   <div class="card">
     <button class="close-button" @click="removeCardFromList">×</button>
-    <div class="body">
+    <p>
       {{ body }}
-    </div>
+    </p>
   </div>
 </template>

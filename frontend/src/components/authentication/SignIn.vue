@@ -49,7 +49,7 @@ const updateUserAuthentication = (authnticationJson) => {
     <head>
       <title>ログイン</title>
     </head>
-    <div class="signin-center-item">
+    <div class="signin-center">
       <div class="card-body text-center card">
         <h1 class="card-title">
           <img src="../../assets/css/img/accountIcon.png" alt="ログイン" />
