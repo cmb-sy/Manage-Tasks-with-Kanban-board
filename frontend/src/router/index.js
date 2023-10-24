@@ -3,13 +3,14 @@
  * templateにて：router-link to="/signup">hogehoge</router-link>
  * scriptにて：$router.push("/backboard");
  */
-
 import { createRouter, createWebHistory } from "vue-router";
 import SignUp from "../components/authentication/SignUp.vue";
 import SignIn from "../components/authentication/SignIn.vue";
-import SingnOut from "../components/authentication/SignOut.vue";
+import SignOut from "../components/authentication/SignOut.vue";
 import BackBoard from "../components/BackBoard.vue";
-
+// import { useStore } from "vuex";
+import store from "../store/index";
+// パスの設定
 const routes = [
   {
     path: "/signin",
@@ -24,12 +25,32 @@ const routes = [
   {
     path: "/signout",
     name: "signout",
-    component: SingnOut,
+    component: SignOut,
+    // ナビゲーションガード
+    beforeEnter: (to, from, next) => {
+      // ユーザがログインしているかどうかを確認
+      if (store.getters.getToken) {
+        // const store = useStore();
+        next(); // アクセスを許可
+      } else {
+        next("/signin"); // ログインページにリダイレクト
+      }
+    },
   },
   {
     path: "/backboard",
     name: "backboard",
     component: BackBoard,
+    // ナビゲーションガード
+    beforeEnter: (to, from, next) => {
+      // ユーザがログインしているかどうかを確認
+      if (store.getters.getToken) {
+        // const store = useStore();
+        next(); // アクセスを許可
+      } else {
+        next("/signin"); // ログインページにリダイレクト
+      }
+    },
   },
 ];
 

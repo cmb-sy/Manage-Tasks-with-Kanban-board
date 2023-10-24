@@ -41,12 +41,13 @@ const titleExists = computed(() => {
       v-model="title"
       type="text"
       class="text-input"
-      placeholder="Add new list"
+      placeholder="カラムを追加"
       @focusin="startEditing"
       @focusout="finishEditing"
     />
+    <br />
     <button type="submit" class="add-button" v-if="isEditing || titleExists">
-      Add
+      追加
     </button>
   </form>
 </template>

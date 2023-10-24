@@ -26,7 +26,7 @@ const movingList = () => {
   <div>
     <nav><router-link to="/signout">サインアウト</router-link></nav>
     <main>
-      <p class="info-line">ALL : {{ totalCardCount }} tasks</p>
+      <p class="info-line">全カード数 : {{ totalCardCount }}</p>
       <div class="list-index">
         <draggable :list="slists" @end="movingList">
           <template #item="{ element, index }">

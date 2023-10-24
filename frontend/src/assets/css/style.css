@@ -14,6 +14,7 @@ body {
   margin: 0 auto;
   padding: 0;
   vertical-align: middle;
+  word-break: normal;
 }
 
 header {
@@ -30,6 +31,8 @@ main {
   padding: 0 10px;
   width: calc(100% - 40px);
   height: 100%;
+  white-space: pre; /* 自動改行しない*/
+  overflow-x: auto;
 }
 
 .info-line {
@@ -52,17 +55,20 @@ main {
 
 .text-input {
   padding: 10px 10px;
-  width: calc(90% - 30px);
+  width: calc(80% - 30px);
+
   background-color: #ccc;
-  border-radius: 8px;
+  border-radius: 5px;
   cursor: pointer;
   border: none;
   font-family: "Noto Sans Japanese", "Noto Sans", "system-ui", sans-serif;
-  font-weight: 700;
+  font-weight: 700; /* フォントのサイズ */
   font-size: 24px;
   color: #242424;
   cursor: pointer;
   overflow: overlay;
+  /* 水平方向に中央配置 */
+  margin: 0 auto;
 }
 
 .text-input:focus {
@@ -78,7 +84,7 @@ main {
   border-radius: 8px;
   font-family: "Noto Sans Japanese", "Noto Sans", "system-ui", sans-serif;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 15px;
   color: #fff;
 }
 
@@ -88,7 +94,7 @@ main {
 }
 
 .active .text-input {
-  background-color: #fff;
+  background-color: yellow;
 }
 .addable .add-button {
   background-color: #00d78f;
@@ -155,6 +161,9 @@ main {
   border-radius: 8px;
   width: 260px;
   cursor: pointer;
+  border: solid 1px black;
+  word-wrap: break-word;
+  white-space: pre-line; /* 高さ方向にも改行 */
 }
 
 .close-button {
@@ -174,45 +183,33 @@ main {
 /* ---------------------------- */
 /* -------------認証------------ */
 /* ---------------------------- */
-.signout-center-item {
-  position: relative;
+
+/* サインアウト */
+.signout-center {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
+  height: 65vh;
 }
 
-.signout-center-item img {
-  position: absolute;
-  top: 70px; /* テキストの上に配置したいだけの余白を設定 */
-  left: 50%; /* 画像を水平方向に中央に配置 */
-  transform: translateX(-50%); /* 画像の中央配置を調整 */
-  z-index: 1; /* 画像がテキストの上に表示されるようにz-indexを設定 */
-}
-
-.signin-center-item {
+/* サインイン */
+.signin-center {
   display: flex;
   align-items: center;
-  height: 120vh;
-  max-width: 300px; /* 任意の幅に設定 */
-  margin: 0 auto; /* 要素を水平方向に中央配置 */
+  justify-content: center;
+  height: 100vh;
+  width: 20%; /* 幅を20%に設定 */
+  margin: 0 auto; /* 左右の余白を自動的に均等に設定 */
 }
 
-.signin-center-item img {
-  position: absolute;
-  top: -150px; /* テキストの上に配置したいだけの余白を設定 */
-  left: 50%; /* 画像を水平方向に中央に配置 */
-  transform: translateX(-50%); /* 画像の中央配置を調整 */
-  z-index: 1; /* 画像がテキストの上に表示されるようにz-indexを設定 */
-}
-
+/* サインアップ */
 .sign-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 80vh;
   text-align: center;
 }
 
