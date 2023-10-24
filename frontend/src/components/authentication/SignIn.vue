@@ -13,8 +13,8 @@ const store = useStore();
 const $router = useRouter();
 
 const userData = ref({
-  username: "test1",
-  password: "test1",
+  username: "",
+  password: "",
 });
 
 const signIn = async () => {

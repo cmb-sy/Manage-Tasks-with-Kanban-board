@@ -6,9 +6,9 @@ import { useRouter } from "vue-router";
 const $router = useRouter();
 
 const userSignupData = ref({
-  username: "test",
-  email: "test@test",
-  password: "test",
+  username: "",
+  email: "",
+  password: "",
 });
 
 const signUp = async () => {
